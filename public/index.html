@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SocialSphere — DBMS Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient background layers -->
+    <div class="ambient">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+        <div class="ambient-orb orb-4"></div>
+    </div>
+    <div class="noise-overlay"></div>
+
+    <!-- ───────────── ONBOARDING MODAL ───────────── -->
+    <div class="ob-backdrop" id="obBackdrop">
+        <div class="ob-sheet" id="obSheet">
+
+            <!-- Header -->
+            <div class="ob-hero">
+                <div class="ob-app-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="white"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="white" stroke-width="2.2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="ob-badge">DBMS Capstone Project</div>
+                <h1 class="ob-title">SocialSphere</h1>
+                <p class="ob-desc">A fully normalised Social Media Database Application built with MySQL, Node.js &amp; an iOS&#8209;inspired interface.</p>
+            </div>
+
+            <!-- Step cards -->
+            <div class="ob-steps">
+                <div class="ob-step ob-step-1">
+                    <div class="ob-step-num" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">1</div>
+                    <div class="ob-step-body">
+                        <h3>Setup the Database</h3>
+                        <p>Click the <strong>Setup</strong> tab → hit <strong>Initialize Database</strong>. This runs <code>schema.sql</code> + <code>sample_data.sql</code> automatically, creating all 11 tables &amp; seeding 183 records.</p>
+                    </div>
+                </div>
+                <div class="ob-step ob-step-2">
+                    <div class="ob-step-num" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">2</div>
+                    <div class="ob-step-body">
+                        <h3>Explore Tables</h3>
+                        <p>Go to the <strong>Tables</strong> tab. Click any chip — <code>users</code>, <code>posts</code>, <code>follows</code>, <code>likes</code>, etc. — to instantly browse live relational data from your MySQL database.</p>
+                    </div>
+                </div>
+                <div class="ob-step ob-step-3">
+                    <div class="ob-step-num" style="background:linear-gradient(135deg,#ec4899,#f97316)">3</div>
+                    <div class="ob-step-body">
+                        <h3>Run Advanced Queries</h3>
+                        <p>Go to <strong>Analytics</strong>. Pick a query card (Joins, Self-Join, Subquery, Aggregation, Having) → click <strong>Run Query</strong> to execute real SQL and see live results rendered in the table.</p>
+                    </div>
+                </div>
+                <div class="ob-step ob-step-4">
+                    <div class="ob-step-num" style="background:linear-gradient(135deg,#16a34a,#14b8a6)">4</div>
+                    <div class="ob-step-body">
+                        <h3>Insert Live Data</h3>
+                        <p>Go to <strong>Insert</strong>. Register new users (with phone number — demonstrates the 3NF multivalued attribute decomposition) and publish posts directly into the live MySQL tables.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature pills -->
+            <div class="ob-features">
+                <span class="ob-feat"><span>🧩</span> 11 Relational Tables</span>
+                <span class="ob-feat"><span>🔗</span> 3NF Normalised</span>
+                <span class="ob-feat"><span>📊</span> 183 Records</span>
+                <span class="ob-feat"><span>👁</span> 1 VIEW</span>
+                <span class="ob-feat"><span>⚡</span> 5 Query Types</span>
+                <span class="ob-feat"><span>🔒</span> ON DELETE CASCADE</span>
+            </div>
+
+            <!-- CTA -->
+            <button class="ob-cta" id="obCta">
+                Get Started
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <p class="ob-dismiss">This guide will appear every time you open the dashboard.</p>
+        </div>
+    </div>
+
+
+    <!-- ───────────── TOP BAR ───────────── -->
+    <header class="topbar">
+        <div class="topbar-left">
+            <div class="app-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="white"/><path d="M4 20c0-4 3.58-7 8-7s8 3 8 7" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <span class="app-name">SocialSphere</span>
+
+
+        </div>
+        <div class="topbar-center">
+            <div class="tab-switcher">
+                <button class="tab active" data-tab="explorer">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                    Tables
+                </button>
+                <button class="tab" data-tab="queries">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    Analytics
+                </button>
+                <button class="tab" data-tab="actions">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    Insert
+                </button>
+                <button class="tab" data-tab="config">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    Setup
+                </button>
+                <div class="tab-indicator"></div>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ───────────── MAIN ───────────── -->
+    <main class="main">
+
+        <!-- EXPLORER TAB -->
+        <section class="panel active" id="panel-explorer">
+            <div class="panel-header">
+                <div>
+                    <h1 class="panel-title">Relation Explorer</h1>
+                    <p class="panel-sub">Browse all 11 tables + 1 view derived from the E-R Diagram</p>
+                </div>
+                <div class="table-chips" id="tableChips"></div>
+            </div>
+            <div class="glass-table-wrap">
+                <div class="table-scroll">
+                    <table>
+                        <thead id="explorerHead"></thead>
+                        <tbody id="explorerBody">
+                            <tr><td colspan="10" class="empty-state">
+                                <div class="empty-icon">🗄️</div>
+                                <p>Select a table above to inspect its relations</p>
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ANALYTICS TAB -->
+        <section class="panel" id="panel-queries">
+            <div class="panel-header">
+                <div>
+                    <h1 class="panel-title">SQL Analytics Engine</h1>
+                    <p class="panel-sub">Execute mandatory capstone query categories in real-time</p>
+                </div>
+            </div>
+
+            <div class="query-cards">
+                <div class="qcard" data-query="joins_posts">
+                    <div class="qcard-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M13 6h3a2 2 0 0 1 2 2v7"/><line x1="6" y1="9" x2="6" y2="21"/></svg>
+                    </div>
+                    <div class="qcard-text">
+                        <h3>INNER + LEFT JOIN</h3>
+                        <p>Posts with author profiles & phone numbers</p>
+                    </div>
+                    <span class="qcard-badge">JOIN</span>
+                </div>
+
+                <div class="qcard" data-query="joins_mutual">
+                    <div class="qcard-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div class="qcard-text">
+                        <h3>Recursive SELF JOIN</h3>
+                        <p>Mutual follow-back connections in the graph</p>
+                    </div>
+                    <span class="qcard-badge">SELF JOIN</span>
+                </div>
+
+                <div class="qcard" data-query="nested_queries">
+                    <div class="qcard-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <div class="qcard-text">
+                        <h3>Nested Subquery</h3>
+                        <p>Users who comment but have never posted</p>
+                    </div>
+                    <span class="qcard-badge">SUBQUERY</span>
+                </div>
+
+                <div class="qcard" data-query="aggregate">
+                    <div class="qcard-icon" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    </div>
+                    <div class="qcard-text">
+                        <h3>Aggregate Functions</h3>
+                        <p>COUNT of likes, comments & hashtags per post</p>
+                    </div>
+                    <span class="qcard-badge">AGG</span>
+                </div>
+
+                <div class="qcard" data-query="groupby_having">
+                    <div class="qcard-icon" style="background:linear-gradient(135deg,#fa709a,#fee140)">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                    </div>
+                    <div class="qcard-text">
+                        <h3>GROUP BY + HAVING</h3>
+                        <p>Groups with 3 or more active members</p>
+                    </div>
+                    <span class="qcard-badge">HAVING</span>
+                </div>
+            </div>
+
+            <div class="console-wrap">
+                <div class="console-toolbar">
+                    <div class="console-dots">
+                        <span style="background:#ff5f57"></span>
+                        <span style="background:#febc2e"></span>
+                        <span style="background:#28c840"></span>
+                    </div>
+                    <span class="console-label" id="consoleLabel">No query selected</span>
+                    <button class="execute-btn" id="runQueryBtn" disabled>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Run Query
+                    </button>
+                </div>
+                <pre class="console-body" id="sqlConsole">-- Select a query card above to preview the SQL ✦</pre>
+            </div>
+
+            <div class="glass-table-wrap" id="queryResultSection" style="display:none">
+                <div class="table-scroll">
+                    <table>
+                        <thead id="queryResultHead"></thead>
+                        <tbody id="queryResultBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSERT TAB -->
+        <section class="panel" id="panel-actions">
+            <div class="panel-header">
+                <div>
+                    <h1 class="panel-title">Data Insertion Engine</h1>
+                    <p class="panel-sub">Live INSERT queries with transaction support and constraint validation</p>
+                </div>
+            </div>
+            <div class="two-col">
+                <div class="form-card">
+                    <div class="form-card-header" style="--accent: #667eea">
+                        <div class="form-card-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div>
+                            <h3>Register User</h3>
+                            <p>INSERT into <code>users</code> + <code>user_phones</code></p>
+                        </div>
+                    </div>
+                    <form id="userForm" class="form-body">
+                        <div class="field-row">
+                            <div class="field">
+                                <label>Username</label>
+                                <input type="text" id="insUsername" placeholder="ironman" required>
+                            </div>
+                            <div class="field">
+                                <label>Email</label>
+                                <input type="email" id="insEmail" placeholder="tony@stark.com" required>
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label>Password</label>
+                                <input type="password" id="insPassword" value="secure123" required>
+                            </div>
+                            <div class="field">
+                                <label>Date of Birth</label>
+                                <input type="date" id="insDob" required>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Phone (Multivalued → user_phones table)</label>
+                            <input type="text" id="insPhone" placeholder="+91 98765 43210">
+                        </div>
+                        <div class="field">
+                            <label>Bio</label>
+                            <textarea id="insBio" rows="3" placeholder="Tell the world who you are..."></textarea>
+                        </div>
+                        <button type="submit" class="form-submit" style="--c1:#667eea;--c2:#764ba2">Write to Database →</button>
+                    </form>
+                </div>
+
+                <div class="form-card">
+                    <div class="form-card-header" style="--accent: #f5576c">
+                        <div class="form-card-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        </div>
+                        <div>
+                            <h3>Publish Post</h3>
+                            <p>INSERT into <code>posts</code> table</p>
+                        </div>
+                    </div>
+                    <form id="postForm" class="form-body">
+                        <div class="field">
+                            <label>Author</label>
+                            <select id="insAuthorSelect" required>
+                                <option value="">Loading users...</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Post Content</label>
+                            <textarea id="insPostContent" rows="4" placeholder="What's on your mind?" required></textarea>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label>Media URL (optional)</label>
+                                <input type="url" id="insMediaUrl" placeholder="https://...">
+                            </div>
+                            <div class="field">
+                                <label>Visibility</label>
+                                <select id="insVisibility">
+                                    <option value="public">Public</option>
+                                    <option value="private">Private</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="form-submit" style="--c1:#f093fb;--c2:#f5576c">Publish Post →</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SETUP TAB -->
+        <section class="panel" id="panel-config">
+            <div class="panel-header">
+                <div>
+                    <h1 class="panel-title">Database Setup</h1>
+                    <p class="panel-sub">Initialize schema, seed data, and manage your local MySQL environment</p>
+                </div>
+            </div>
+            <div class="setup-grid">
+                <div class="setup-card primary-card">
+                    <div class="setup-card-top">
+                        <div class="setup-icon">🚀</div>
+                        <div>
+                            <h3>Run Full Migration</h3>
+                            <p>Drops existing tables → recreates schema.sql → seeds sample_data.sql with 183 records across all 11 relations</p>
+                        </div>
+                    </div>
+                    <div class="setup-warning">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        This will DROP and recreate all tables. Only run once or when resetting the demo.
+                    </div>
+                    <button class="migrate-btn" id="setupDbBtn">Initialize Database</button>
+                </div>
+
+                <div class="setup-card info-card">
+                    <h3>📊 Schema Summary</h3>
+                    <div class="schema-pills">
+                        <span class="spill">users</span>
+                        <span class="spill">user_phones</span>
+                        <span class="spill">posts</span>
+                        <span class="spill">comments</span>
+                        <span class="spill">messages</span>
+                        <span class="spill">user_groups</span>
+                        <span class="spill">hashtags</span>
+                        <span class="spill">post_hashtags</span>
+                        <span class="spill">follows</span>
+                        <span class="spill">likes</span>
+                        <span class="spill">joins</span>
+                        <span class="spill view-spill">user_activity_summary (VIEW)</span>
+                    </div>
+                    <div class="schema-meta">
+                        <div class="meta-stat"><span>11</span><label>Tables</label></div>
+                        <div class="meta-stat"><span>1</span><label>View</label></div>
+                        <div class="meta-stat"><span>183</span><label>Records</label></div>
+                        <div class="meta-stat"><span>4</span><label>Indexes</label></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toast Container -->
+    <div class="toast-stack" id="toastStack"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
