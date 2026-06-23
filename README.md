@@ -422,7 +422,8 @@ This project is configured for **zero-config deployment** on [Railway](https://r
 
 | Name | Role |
 |---|---|
-| **Raunit Jha** | Database Design, SQL Engineering, Full-Stack Development |
+| **Rahul Upred** | Database Design, SQL Engineering, Normalization Analysis |
+| **Shashwat Singh** | Backend API Development, Frontend Dashboard, Deployment |
 
 > **College:** DBMS Capstone Project Submission  
 > **Project Option:** Option 1 — Social Media Application  
