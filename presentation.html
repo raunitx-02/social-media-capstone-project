@@ -439,7 +439,7 @@
             </table>
           </div>
           <div class="glass" style="background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.25)">
-            <div style="font-size:0.78rem;font-weight:700;color:#d8b4fe;margin-bottom:6px">⚠️ Multivalued Attribute</div>
+            <div style="font-size:0.78rem;font-weight:700;color:#5b21b6;font-weight:800;margin-bottom:6px">⚠️ Multivalued Attribute</div>
             <p style="font-size:0.78rem;color:#374151;line-height:1.6"><span class="hi">phone_no</span> on USER is multivalued (double oval in E-R). Decomposed into <span class="hi">user_phones(user_id, phone_no)</span> table — satisfies 1NF.</p>
           </div>
         </div>
@@ -480,21 +480,21 @@
           <div class="norm-num" style="background:linear-gradient(135deg,#6366f1,#8b5cf6)">1NF</div>
           <div>
             <h4>First Normal Form — Atomic Values</h4>
-            <p><span class="hi">Problem:</span> phone_no is multivalued — one user can have multiple phones. <span class="hi">Fix:</span> Decomposed into <span style="color:#a5f3fc;font-family:monospace">user_phones(user_id, phone_no)</span> with composite primary key. Every cell now holds exactly one atomic value. ✅</p>
+            <p><span class="hi">Problem:</span> phone_no is multivalued — one user can have multiple phones. <span class="hi">Fix:</span> Decomposed into <span style="color:#1e3a5f;font-family:monospace;font-weight:700">user_phones(user_id, phone_no)</span> with composite primary key. Every cell now holds exactly one atomic value. ✅</p>
           </div>
         </div>
         <div class="norm-step">
           <div class="norm-num" style="background:linear-gradient(135deg,#3b82f6,#06b6d4)">2NF</div>
           <div>
             <h4>Second Normal Form — No Partial Dependencies</h4>
-            <p>Checked all composite-key tables: <span style="color:#a5f3fc;font-family:monospace">joins(user_id, group_id, join_date)</span> — join_date depends on the FULL composite key, not just one part. <span style="color:#a5f3fc;font-family:monospace">follows</span> and <span style="color:#a5f3fc;font-family:monospace">post_hashtags</span> have no non-key attributes. All tables satisfy 2NF. ✅</p>
+            <p>Checked all composite-key tables: <span style="color:#1e3a5f;font-family:monospace;font-weight:700">joins(user_id, group_id, join_date)</span> — join_date depends on the FULL composite key, not just one part. <span style="color:#1e3a5f;font-family:monospace;font-weight:700">follows</span> and <span style="color:#1e3a5f;font-family:monospace;font-weight:700">post_hashtags</span> have no non-key attributes. All tables satisfy 2NF. ✅</p>
           </div>
         </div>
         <div class="norm-step">
           <div class="norm-num" style="background:linear-gradient(135deg,#22c55e,#14b8a6)">3NF</div>
           <div>
             <h4>Third Normal Form — No Transitive Dependencies</h4>
-            <p>User details (bio, dob) stored ONLY in <span style="color:#a5f3fc;font-family:monospace">users</span> — never repeated in posts or comments. No non-key attribute determines another non-key attribute in any table. Schema satisfies 3NF and BCNF for most relations. ✅</p>
+            <p>User details (bio, dob) stored ONLY in <span style="color:#1e3a5f;font-family:monospace;font-weight:700">users</span> — never repeated in posts or comments. No non-key attribute determines another non-key attribute in any table. Schema satisfies 3NF and BCNF for most relations. ✅</p>
           </div>
         </div>
         <div class="norm-step" style="border-color:rgba(168,85,247,0.3);background:rgba(168,85,247,0.06)">
@@ -541,10 +541,10 @@
           <table class="nice-table">
             <thead><tr><th>Table</th><th>Resolves</th></tr></thead>
             <tbody>
-              <tr><td style="font-family:monospace;color:#a5f3fc">follows</td><td>User ↔ User (Recursive)</td></tr>
-              <tr><td style="font-family:monospace;color:#a5f3fc">likes</td><td>User ↔ Post</td></tr>
-              <tr><td style="font-family:monospace;color:#a5f3fc">joins</td><td>User ↔ Group</td></tr>
-              <tr><td style="font-family:monospace;color:#a5f3fc">post_hashtags</td><td>Post ↔ Hashtag</td></tr>
+              <tr><td style="font-family:monospace;color:#1e3a5f;font-weight:700">follows</td><td>User ↔ User (Recursive)</td></tr>
+              <tr><td style="font-family:monospace;color:#1e3a5f;font-weight:700">likes</td><td>User ↔ Post</td></tr>
+              <tr><td style="font-family:monospace;color:#1e3a5f;font-weight:700">joins</td><td>User ↔ Group</td></tr>
+              <tr><td style="font-family:monospace;color:#1e3a5f;font-weight:700">post_hashtags</td><td>Post ↔ Hashtag</td></tr>
             </tbody>
           </table>
         </div>
@@ -668,7 +668,7 @@
       <div style="margin-top:16px;padding:14px 20px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);border-radius:14px;display:flex;align-items:center;gap:12px">
         <span style="font-size:1.2rem">🔗</span>
         <div>
-          <div style="font-size:0.78rem;font-weight:700;color:#a5b4fc">GitHub Repository</div>
+          <div style="font-size:0.78rem;font-weight:700;color:#3730a3">GitHub Repository</div>
           <div style="font-size:0.82rem;color:#4a4a6a">github.com/raunitx-02/social-media-capstone-project</div>
         </div>
       </div>
