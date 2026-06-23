@@ -348,44 +348,94 @@ social-media-capstone-project/
 
 ## ⚙️ Setup & Installation
 
-### Prerequisites
-- [Node.js](https://nodejs.org) v18+
-- [MySQL](https://dev.mysql.com/downloads/) 8.0+ running locally (or use Railway)
+> **TL;DR** — Clone → `npm install` → `npm run dev` → open `localhost:3000` → click **Setup → Initialize Database**. Done.
 
-### 1. Clone the repository
+---
+
+### Prerequisites
+Make sure these are installed on your machine:
+- **[Node.js](https://nodejs.org) v18+** — [Download here](https://nodejs.org/en/download)
+- **[MySQL](https://dev.mysql.com/downloads/) 8.0+** — [Download here](https://dev.mysql.com/downloads/mysql/)
+
+To check if you have them:
+```bash
+node -v     # should print v18.x.x or higher
+mysql --version
+```
+
+---
+
+### Step 1 — Clone the repository
 ```bash
 git clone https://github.com/raunitx-02/social-media-capstone-project.git
 cd social-media-capstone-project
 ```
 
-### 2. Install dependencies
+---
+
+### Step 2 — Install dependencies
 ```bash
 npm install
 ```
+This installs: `express`, `mysql2`, `cors`, `dotenv`
 
-### 3. Configure environment (optional)
-By default, the app connects to `localhost` with `root` and no password.  
-If your MySQL setup is different, create a `.env` file:
+---
+
+### Step 3 — Make sure MySQL is running
+
+**On macOS:**
+```bash
+mysql.server start
+```
+**On Windows:**  
+Open Services → find **MySQL80** → click Start  
+*(or open MySQL Workbench — it starts the service automatically)*
+
+**On Linux:**
+```bash
+sudo systemctl start mysql
+```
+
+---
+
+### Step 4 — Configure environment *(only if needed)*
+By default the app connects to `localhost` with user `root` and **no password**.  
+If your MySQL has a password, create a `.env` file in the project root:
+
 ```env
 DB_HOST=localhost
 DB_USER=root
-DB_PASSWORD=your_password
+DB_PASSWORD=your_mysql_password
 DB_NAME=social_media_db
 PORT=3000
 ```
+> ⚠️ The `.env` file is in `.gitignore` — it will never be pushed to GitHub.
 
-### 4. Start the server
+---
+
+### Step 5 — Start the server
 ```bash
 npm run dev
 ```
-
-### 5. Initialize the database
-1. Open **[http://localhost:3000](http://localhost:3000)** in your browser
-2. Click the **Setup** tab
-3. Click **Initialize Database**
-4. All 11 tables are created and 183 records are seeded automatically ✅
+You should see:
+```
+Server running on http://localhost:3000
+Connected to MySQL database: social_media_db
+```
 
 ---
+
+### Step 6 — Initialize the database
+1. Open **[http://localhost:3000](http://localhost:3000)** in your browser
+2. The **Welcome Guide** popup appears — read it and click **Get Started**
+3. Click the **Setup** tab in the top navbar
+4. Click the **Initialize Database** button
+5. ✅ All **11 tables** are created and **183 records** are seeded automatically
+
+You're ready — explore all tabs!
+
+---
+
 
 ## 🌐 API Endpoints
 
